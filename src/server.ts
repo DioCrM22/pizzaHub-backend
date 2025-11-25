@@ -12,7 +12,7 @@ app.use(cors());
 
 // @ts-ignore ← ADICIONE ESTA LINHA
 app.use(fileUpload({
-  limits: { fileSize: 50 * 1024 * 1024 }
+  limits: { fileSize: 50 * 1024 * 1024 } //No máximo 50mb
 }))
 
 app.use(router);
