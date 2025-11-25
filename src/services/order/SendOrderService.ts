@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 interface OrderRequest {
     order_id: string;
@@ -7,7 +7,7 @@ interface OrderRequest {
 class SendOrderService{
     async execute({ order_id }: OrderRequest){
         
-        const order = await prismaClient.order.update({
+        const order = await prisma.order.update({
             where:{
                 id: order_id
             },

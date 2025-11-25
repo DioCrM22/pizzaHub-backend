@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 interface DetailRequest {
     order_id: string;
@@ -7,7 +7,7 @@ interface DetailRequest {
 class DetailOrderService {
     async execute({ order_id }: DetailRequest) {
 
-        const orders = await prismaClient.item.findMany({
+        const orders = await prisma.item.findMany({
             where: {
                 order_id: order_id
             },

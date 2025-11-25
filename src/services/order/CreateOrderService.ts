@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 interface OrderRequest {
     table: number;
@@ -8,7 +8,7 @@ interface OrderRequest {
 class CreateOrderService {
     async execute({table, name}: OrderRequest) {  
 
-        const order = await prismaClient.order.create({
+        const order = await prisma.order.create({
             data: {
                 table: table,
                 name: name

@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 interface ItemRequest {
     item_id: string;
@@ -7,7 +7,7 @@ interface ItemRequest {
 class RemoveItemService {
     async execute({ item_id }: ItemRequest) {
       
-        const order = await prismaClient.item.delete({
+        const order = await prisma.item.delete({
             where: {
                 id: item_id
             }

@@ -1,4 +1,4 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 interface CategoryRequest{
   name: string;
@@ -11,7 +11,7 @@ class CreateCategoryService{
       throw new Error('Name invalid')
     }
 
-    const category = await prismaClient.category.create({
+    const category = await prisma.category.create({
       data:{
         name: name,
       },

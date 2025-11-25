@@ -1,8 +1,8 @@
-import prismaClient from "@prisma/client";
+import prismaClient from "../../prisma";
 
 class ListOrdersService {
     async execute() {
-        const orders = await prismaClient.order.findMany({
+        const orders = await prisma.order.findMany({
             where: {
                 draft: false,
                 status: false   
