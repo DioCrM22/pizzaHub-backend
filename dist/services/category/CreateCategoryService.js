@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCategoryService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateCategoryService {
-    execute({ name }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ name }) {
             if (name === '') {
                 throw new Error('Name invalid');
             }

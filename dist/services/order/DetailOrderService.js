@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DetailOrderService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class DetailOrderService {
-    execute({ order_id }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ order_id }) {
             const orders = yield prisma_1.default.item.findMany({
                 where: {
                     order_id: order_id

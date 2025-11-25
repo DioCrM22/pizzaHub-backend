@@ -17,8 +17,8 @@ const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 const jsonwebtoken_1 = require("jsonwebtoken");
 class AuthUserService {
-    execute({ email, password }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ email, password }) {
             //Verificar se o email existe.
             const user = yield prisma_1.default.user.findFirst({
                 where: {

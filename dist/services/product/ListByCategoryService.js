@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListByCategoryService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class ListByCategoryService {
-    execute({ category_id }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ category_id }) {
             const findByCategory = yield prisma_1.default.product.findMany({
                 where: {
                     category_id: category_id

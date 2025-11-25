@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isAuthenticated = void 0;
+exports.isAuthenticated = isAuthenticated;
 const jsonwebtoken_1 = require("jsonwebtoken");
 function isAuthenticated(req, res, next) {
     // Receber o token
@@ -20,4 +20,3 @@ function isAuthenticated(req, res, next) {
         return res.status(401).end();
     }
 }
-exports.isAuthenticated = isAuthenticated;

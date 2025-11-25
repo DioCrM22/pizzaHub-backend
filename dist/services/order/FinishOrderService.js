@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FinishOrderService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class FinishOrderService {
-    execute({ order_id }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ order_id }) {
             const order = yield prisma_1.default.order.update({
                 where: {
                     id: order_id

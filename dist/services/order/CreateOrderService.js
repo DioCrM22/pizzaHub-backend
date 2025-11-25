@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrderService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 class CreateOrderService {
-    execute({ table, name }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ table, name }) {
             const order = yield prisma_1.default.order.create({
                 data: {
                     table: table,

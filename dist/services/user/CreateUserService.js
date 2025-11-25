@@ -16,8 +16,8 @@ exports.CreateUserService = void 0;
 const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 class CreateUserService {
-    execute({ name, email, password }) {
-        return __awaiter(this, void 0, void 0, function* () {
+    execute(_a) {
+        return __awaiter(this, arguments, void 0, function* ({ name, email, password }) {
             // verificar se ele enviou um email
             if (!email) {
                 throw new Error("Email incorrect");
