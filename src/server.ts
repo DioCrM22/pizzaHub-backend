@@ -11,9 +11,9 @@ app.use(express.json());
 app.use(cors());
 
 // @ts-ignore ← ADICIONE ESTA LINHA
-app.use(fileUpload({
+//app.use(fileUpload({
   limits: { fileSize: 50 * 1024 * 1024 } //No máximo 50mb
-}))
+//}))
 
 app.use(router);
 
