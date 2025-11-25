@@ -1,5 +1,5 @@
 
-import prismaClient from "../../prisma";
+import prismaClient from "@prisma/client";
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 

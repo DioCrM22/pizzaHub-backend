@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma";
+import prismaClient from "@prisma/client";
 
 interface OrderRequest {
     order_id: string;
