@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthUserService = void 0;
-const prisma_1 = __importDefault(require("@prisma/client"));
+const prisma_1 = __importDefault(require("../../prisma"));
 const bcryptjs_1 = require("bcryptjs");
 const jsonwebtoken_1 = require("jsonwebtoken");
 class AuthUserService {

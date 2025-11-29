@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ListByCategoryService = void 0;
-const prisma_1 = __importDefault(require("@prisma/client"));
+const prisma_1 = __importDefault(require("../../prisma"));
 class ListByCategoryService {
     execute(_a) {
         return __awaiter(this, arguments, void 0, function* ({ category_id }) {
