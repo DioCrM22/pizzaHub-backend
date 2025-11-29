@@ -7,7 +7,7 @@ interface DetailRequest {
 class DetailOrderService {
     async execute({ order_id }: DetailRequest) {
 
-        const orders = await prisma.item.findMany({
+        const orders = await prismaClient.item.findMany({
             where: {
                 order_id: order_id
             },

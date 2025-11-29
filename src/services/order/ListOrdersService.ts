@@ -2,7 +2,7 @@ import prismaClient from "../../prisma";
 
 class ListOrdersService {
     async execute() {
-        const orders = await prisma.order.findMany({
+        const orders = await prismaClient.order.findMany({
             where: {
                 draft: false,
                 status: false   

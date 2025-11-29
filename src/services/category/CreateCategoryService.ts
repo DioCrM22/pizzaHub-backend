@@ -11,7 +11,7 @@ class CreateCategoryService{
       throw new Error('Name invalid')
     }
 
-    const category = await prisma.category.create({
+    const category = await prismaClient.category.create({
       data:{
         name: name,
       },
