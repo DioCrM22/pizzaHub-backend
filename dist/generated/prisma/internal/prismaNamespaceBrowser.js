@@ -47,10 +47,16 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TransactionIsolationLevel = exports.ModelName = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.UsersScalarFieldEnum = exports.ProductsScalarFieldEnum = exports.OrdersScalarFieldEnum = exports.ItemsScalarFieldEnum = exports.CategoriesScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
-exports.ModelName = {};
+exports.ModelName = {
+    categories: 'categories',
+    items: 'items',
+    orders: 'orders',
+    products: 'products',
+    users: 'users'
+};
 /**
  * Enums
  */
@@ -60,3 +66,56 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
+exports.CategoriesScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.ItemsScalarFieldEnum = {
+    id: 'id',
+    amount: 'amount',
+    created_at: 'created_at',
+    order_id: 'order_id',
+    product_id: 'product_id',
+    updated_at: 'updated_at'
+};
+exports.OrdersScalarFieldEnum = {
+    id: 'id',
+    table: 'table',
+    status: 'status',
+    draft: 'draft',
+    name: 'name',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.ProductsScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    price: 'price',
+    description: 'description',
+    banner: 'banner',
+    category_id: 'category_id',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.UsersScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    password: 'password',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.SortOrder = {
+    asc: 'asc',
+    desc: 'desc'
+};
+exports.QueryMode = {
+    default: 'default',
+    insensitive: 'insensitive'
+};
+exports.NullsOrder = {
+    first: 'first',
+    last: 'last'
+};

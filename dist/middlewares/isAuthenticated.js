@@ -8,15 +8,21 @@ function isAuthenticated(req, res, next) {
     if (!authToken) {
         return res.status(401).end();
     }
-    const [, token] = authToken.split(" ");
+    const [, token] = authToken.split(' ');
     try {
-        //Validar esse token.
-        const { sub } = (0, jsonwebtoken_1.verify)(token, process.env.JWT_SECRET);
-        //Recuperar o id do token e colocar dentro de uma variavel user_id dentro do req.
+        // Validar esse token.
+        const secret = process.env.JWT_SECRET;
+        if (!secret) {
+            console.error('JWT_SECRET não está definido nas variáveis de ambiente');
+            return res.status(500).json({ error: 'Erro interno do servidor' });
+        }
+        const { sub } = (0, jsonwebtoken_1.verify)(token, secret);
+        // Recuperar o id do token e colocar dentro de uma variavel user_id dentro do req.
         req.user_id = sub;
         return next();
     }
     catch (err) {
-        return res.status(401).end();
+        console.error('Erro na autenticação:', err);
+        return res.status(401).json({ error: 'Token inválido' });
     }
 }

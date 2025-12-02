@@ -47,7 +47,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.UsersScalarFieldEnum = exports.ProductsScalarFieldEnum = exports.OrdersScalarFieldEnum = exports.ItemsScalarFieldEnum = exports.CategoriesScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/library"));
 /**
  * Prisma Errors
@@ -101,7 +101,13 @@ exports.JsonNull = runtime.objectEnumValues.instances.JsonNull;
  * @see https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-on-a-json-field
  */
 exports.AnyNull = runtime.objectEnumValues.instances.AnyNull;
-exports.ModelName = {};
+exports.ModelName = {
+    categories: 'categories',
+    items: 'items',
+    orders: 'orders',
+    products: 'products',
+    users: 'users'
+};
 /**
  * Enums
  */
@@ -111,4 +117,57 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
+exports.CategoriesScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.ItemsScalarFieldEnum = {
+    id: 'id',
+    amount: 'amount',
+    created_at: 'created_at',
+    order_id: 'order_id',
+    product_id: 'product_id',
+    updated_at: 'updated_at'
+};
+exports.OrdersScalarFieldEnum = {
+    id: 'id',
+    table: 'table',
+    status: 'status',
+    draft: 'draft',
+    name: 'name',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.ProductsScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    price: 'price',
+    description: 'description',
+    banner: 'banner',
+    category_id: 'category_id',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.UsersScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    password: 'password',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+exports.SortOrder = {
+    asc: 'asc',
+    desc: 'desc'
+};
+exports.QueryMode = {
+    default: 'default',
+    insensitive: 'insensitive'
+};
+exports.NullsOrder = {
+    first: 'first',
+    last: 'last'
+};
 exports.defineExtension = runtime.Extensions.defineExtension;

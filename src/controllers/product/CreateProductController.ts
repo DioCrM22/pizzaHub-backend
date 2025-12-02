@@ -10,26 +10,42 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 })
 
-class CreateProductController{
-  async handle(req: Request, res: Response){
-    const { name, price, description, category_id } = req.body;
+class CreateProductController {
+  async handle(req: Request, res: Response) {
+    const { name, price, description, category_id } = req.body
+    const createProductService = new CreateProductService()
 
-    const createProductService = new CreateProductService();
+    // Verificação mais robusta dos arquivos
+    if (!req.files) {
+      return res.status(400).json({ error: "No files uploaded" })
+    }
 
-    if(!req.files || Object.keys(req.files).length === 0){
-      throw new Error("error upload file")
-    }else{
-      const file: UploadedFile = req.files['file']
+    // Tipo seguro para acessar os arquivos
+    const files = req.files as any
+    const file: UploadedFile = files['file'] as UploadedFile
 
+    if (!file) {
+      return res.status(400).json({ error: "No file with key 'file' found" })
+    }
+
+    // Se file for array, pegue o primeiro elemento
+    const fileToUpload = Array.isArray(file) ? file[0] : file
+
+    try {
       const resultFile: UploadApiResponse = await new Promise((resolve, reject) => {
-        cloudinary.uploader.upload_stream({}, function (error, result){
-          if(error){
-            reject(error);
-            return;
+        cloudinary.uploader.upload_stream({}, (error, result) => {
+          if (error) {
+            reject(error)
+            return
           }
-
+          
+          if (!result) {
+            reject(new Error('Upload failed: result is undefined'))
+            return
+          }
+          
           resolve(result)
-        }).end(file.data)
+        }).end(fileToUpload.data)
       })
 
       const product = await createProductService.execute({
@@ -38,11 +54,12 @@ class CreateProductController{
         description,
         banner: resultFile.url,
         category_id
-      });
-  
-      return res.json(product)
-    }
+      })
 
+      return res.json(product)
+    } catch (error) {
+      return res.status(500).json({ error: (error as Error).message })
+    }
   }
 }
 
